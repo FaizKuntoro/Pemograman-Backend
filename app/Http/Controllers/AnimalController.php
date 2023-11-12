@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AnimalController extends Controller
 {
@@ -23,8 +24,24 @@ class AnimalController extends Controller
     # method store - menambahkan hewan baru
     public function store(Request $request)
     {
-        array_push($this->animals, $request);
-        $this->index();
+        #validate
+        $validateData = $request->validate([
+            'nama' => 'required',
+            'nim' => 'numeric|required',
+            'email' => 'email|required',
+            'jurusan' => 'required'
+        ]);
+
+        $student = Student::create($validateData);
+
+
+        $data = [
+            'message' => 'Student is created succesfully',
+            'data' => $student,
+        ];
+
+        // mengembalikan data (json) dan kode 201
+        return response()->json($data, 201);
     }
 
     # method update - mengupdate hewan
