@@ -41,7 +41,7 @@ class NewsController extends Controller
     }
 
     //fungsi kategori, untuk menampilak data bedasarkan judul
-    public function judul($judul)
+    public function search($judul)
     {
         //mencari data bedasarkan judul, 
         $news = News::where('judul', $judul)->get();
