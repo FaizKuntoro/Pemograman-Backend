@@ -137,7 +137,7 @@ class EmployeesController {
             const data = {
                 message: "Menampilkan semua detail data Employee",
                 data: employee,
-
+                
             };
 
             res.status(200).json(data);

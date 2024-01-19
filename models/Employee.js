@@ -48,18 +48,18 @@ class Employee {
         });
     }
 
-    static findByStatus(Status) {
-        return new Promise((resolve, reject) => {
-            const sql = `SELECT * FROM employees WHERE Status = ?`;
-            db.query(sql, Status, (err, results) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(results);
-                }
-            });
+   static findByStatus(Status) {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM employees WHERE Status = ?`;
+        db.query(sql, Status, (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
         });
-    }
+    });
+}
 
     static findByName(Nama_Pegawai) {
         // lakukan promise, select by id
